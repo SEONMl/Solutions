@@ -1,3 +1,2 @@
-n=int(input())
-lst=list(map(int,input().split()))
-print(min(lst),max(lst))
+a=str(input())
+print(a+"??!")
