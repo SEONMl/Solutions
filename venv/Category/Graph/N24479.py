@@ -23,4 +23,5 @@ while stk:
         if not visit[i]:
             stk.append(i)
     depth+=1
-print(*res)
+for i in res:
+    print(i)

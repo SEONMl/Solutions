@@ -1,39 +1,40 @@
+# 220510
 from collections import deque
+import sys
+n, m, v = map(int, sys.stdin.readline().split())
+matrix = [[]*(n+1) for i in range(n+1)];
 
-n, m, v = map(int, input().split())
-matrix = [[0] * (n + 1) for i in range(n + 1)];
-isVisited = [0] * (n + 1)
-
-# 그래프 행렬 정의
 for i in range(m):
-    a, b = map(int, input().split())
-    matrix[a][b] = matrix[b][a] = 1
-
+    a, b = map(int, sys.stdin.readline().split())
+    matrix[a].append(b)
+    matrix[b].append(a)
 
 def dfs(v):
-    isVisited[v] = 1
-    print(v, end=" ")
-    for i in range(n + 1):
-        if (isVisited[i] == 0 & matrix[v][i] == 1):
+    global res,visit
+    res.append(v)
+    visit[v]=1
+    for i in sorted(matrix[v]):
+        if visit[i]!=1:
             dfs(i)
-
-
 def bfs(v):
-    queue = deque()
-    queue.append(v)
-    print(v, end=" ")
-    isVisited[v] = 1
+    global res,visit
+    visit[v]=1
+    q=deque()
+    q.append(v)
+    while q:
+        tmp=q.popleft()
+        for i in sorted(matrix[tmp]):
+            if visit[i]!=1:
+                visit[i]=1
+                q.append(i)
+        res.append(tmp)
 
-    for i in range(n + 1):
-        while queue:
-            v = queue.popleft()
-            print(v, end=" ")
-            if (matrix[v][i] == 1 & isVisited[i] == 0):
-                queue.append(i)
-                isVisited[i] = True
-
-
+res=[]
+visit = [0]*(n+1)
 dfs(v)
-isVisited[v] = False
-print()
+print(*res)
+
+res=[]
+visit = [0]*(n+1)
 bfs(v)
+print(*res)
