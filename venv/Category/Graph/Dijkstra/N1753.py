@@ -7,7 +7,7 @@ g=[[] for i in range(V+1)]
 ans=[INF]*(V+1)
 q=[]
 for i in range(E):
-    u,v,w=map(int, sys.stdin.readline().split())
+    u,v,w=map(int, sys.stdin.readline().split()) # start, end, cost
     g[u].append([v,w])
 
 def dijkstra(start):
