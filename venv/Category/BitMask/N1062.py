@@ -8,7 +8,7 @@ s=[set(input().rstrip()[4:-4])-must for i in range(N)] # a, n, t ,i, c
 ans=0
 if K<=4:
     print(0)
-    eixt(0)
+    exit(0)
 for i in list(combinations(word,K-5)):
     cnt=0
     for j in s:
