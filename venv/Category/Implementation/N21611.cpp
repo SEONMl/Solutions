@@ -1,15 +1,15 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-#include<map>
-#define MAX 50
+#define MAX 51
+#define INF 99999999
 #define fse(A,B,C) for(int i=A;i<B;i+=C)
 using namespace std;
 int N,M,g[MAX][MAX];
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 int pos[MAX][MAX];
-int answer;
+vector<int> popped={0,0,0,0};
 
 void print(vector<int> v){
     for(int k:v) cout<<k<<" ";
@@ -44,9 +44,9 @@ vector<int> snailAlgorithm(){
 vector<int> transform(vector<int> v){ // 변화단계 및 중복 원소 체크용
     if(v.size()==0) return {};
 
-    pair<int,int> prev={1,v[0]};
-    vector<int> res, tmp;
-    for(int i(1); i<v.size() ;i++){
+    pair<int,int> prev={1, v[0]};
+    vector<int> res;
+    for(int i(1); i<v.size() && res.size()<N*N;i++){
         if(prev.second!=v[i]){
             res.push_back(prev.first); // 개수
             res.push_back(prev.second); // 번호
@@ -58,51 +58,52 @@ vector<int> transform(vector<int> v){ // 변화단계 및 중복 원소 체크�
     res.push_back(prev.first);
     res.push_back(prev.second);
 
-    if(res.size()>=N*N) {
-        for(int i(0);i<N*N-1;i++){
-            tmp.push_back(res[i]);
-        }
-        res=tmp;
+    while(res.size()>=N*N){
+        res.pop_back();
     }
     return res;
 }
-pair<vector<int>,bool> pop(vector<int> v){
-    vector<int> tar=transform(v);
-    vector<int> res;
 
-    bool hasMoreThanFour = false;
-    for(int i(0);i<tar.size();i+=2){
-        if(tar[i]>=4) {
-            answer+=tar[i]*tar[i+1];
-            hasMoreThanFour=true;
-            continue;
-        }
-        for(int j(0); j<tar[i] ;j++){
-            res.push_back(tar[i+1]);
-        }
-    }
-
-    return {res, hasMoreThanFour};
-}
 vector<int> moveAndPop(vector<int> current){
-    pair<vector<int>,bool> tmp;
-    do{
+    bool checkAgain=true;
+    while(checkAgain){
+        checkAgain=false;
+        pair<int,int> prev={INF,0}; // 숫자, 개수
         vector<int> res;
         for(int i(0);i<current.size();i++){ // 0인 원소 제거
-            if(current[i]) res.push_back(current[i]);
+            if(current[i]) {
+                if(prev.first==current[i]) prev.second++;
+                else{
+                    if(prev.second>=4){
+                        for(int j(0);j<prev.second;j++){
+                            popped[prev.first]++;
+                            res.pop_back();
+                        }
+                        checkAgain=true;
+                    }
+                    prev={current[i], 1};
+                }
+                res.push_back(current[i]);
+            }
         }
-        tmp = pop(res); // 4개 이상 폭발
-        current = tmp.first;
-    }while(tmp.second);
 
-    return tmp.first;
+        if(prev.second>=4){
+            for(int j(0);j<prev.second;j++){
+                popped[prev.first]++;
+                res.pop_back();
+            }
+            checkAgain=true;
+        }
+        current=res;
+    }
+    return current;
 }
 vector<int> attack(int dir, int dis, vector<int> current){
     for(int i(1);i<=dis;i++){
-        int nx=N/2+dx[dir-1]*i;
-        int ny=N/2+dy[dir-1]*i;
+        int nx=N/2+dx[dir]*i;
+        int ny=N/2+dy[dir]*i;
         int idx = pos[nx][ny];
-        current[idx]=0;
+        if(idx<current.size()) current[idx]=0;
     }
     current=moveAndPop(current);
     current=transform(current);
@@ -120,8 +121,8 @@ int main(){
     fse(0,M,1){
         int dir,dis;
         cin>>dir>>dis;
-        v=attack(dir,dis,v);
-        print(v);
+        v=attack(dir-1,dis,v);
     }
-    cout<<answer;
+    int ans=popped[1]+popped[2]*2+popped[3]*3;
+    cout<<ans;
 }
