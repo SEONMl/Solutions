@@ -12,19 +12,13 @@
 - [Level 3](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Programmers/Lv3)
 - [Level 4](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Programmers/Lv4)
 
-<br/>
 
 ### [**SW Expert Academy 솔루션**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/SWExpertAcademy)
 
 
-<br/>
-
 ---
-<br/>
-
 ## **알고리즘 분류**
 
-<br/>
 
 ### **기초**
 - [Basic](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Basic)
@@ -33,17 +27,14 @@
 - [Sort](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Sorting)
 - [String](https://github.com/SEONMl/Solutions/tree/master/venv/Category/String)
 
-<br/>
 
 ### **완전 탐색**
 - [Brute Force](https://github.com/SEONMl/Solutions/tree/master/venv/Category/BruteForce)
 - [Backtracking](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Backtracking)
 
-<br/>
 
 ### [**구현, 시뮬레이션**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Implementation)
 
-<br/>
 
 ### **자료 구조**
 - [Stack / Queue](https://github.com/SEONMl/Solutions/tree/master/venv/Category/StackQueue)
@@ -51,44 +42,35 @@
 - [Heap](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Heap)
 - [Tree](#tree)
 
-<br/>
 
 ### [**Greedy**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Greedy)
 
-<br/>
 
 ### **Graph** 
 - [그래프 알고리즘 (Dijkstra, BellmanFord, MST 등등)](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Graph)
 - [DFS / BFS](https://github.com/SEONMl/Solutions/tree/master/venv/Category/DfsBfs)
 
-<br/>
 
 ### **Dynamic Programming** 
 - [첫 번째](https://github.com/SEONMl/Solutions/tree/master/venv/Category/DynamicProgramming)
 - [두 번째](https://github.com/SEONMl/Solutions/tree/master/venv/Category/DynamicProgramming_2)
 
-<br/>
 
 ### [**Tree**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Tree)
 - [Union Find](https://github.com/SEONMl/Solutions/tree/master/venv/Category/UnionFind)
 - [Topology Sort](https://github.com/SEONMl/Solutions/tree/master/venv/Category/TopologySort)
 
 
-<br/>
-
 ### **배열 탐색**
 - [Binary Search](https://github.com/SEONMl/Solutions/tree/master/venv/Category/BinarySearch)
 - [Two Pointer](https://github.com/SEONMl/Solutions/tree/master/venv/Category/TwoPointer)
 - [Prefix Sum](https://github.com/SEONMl/Solutions/tree/master/venv/Category/PrefixSum)
 
-<br/>
 
 ### [**Divide Conquer**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/DivideConquer)
 
-<br/>
 
 ### [**Bit Masking**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/BitMask)
 
-<br/>
 
 ---
