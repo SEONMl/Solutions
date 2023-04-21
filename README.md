@@ -46,7 +46,7 @@
 ### [**Greedy**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Greedy)
 
 
-### **Graph** 
+### **Graph Approach** 
 - [그래프 알고리즘 (Dijkstra, BellmanFord, MST 등등)](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Graph)
 - [DFS / BFS](https://github.com/SEONMl/Solutions/tree/master/venv/Category/DfsBfs)
 
