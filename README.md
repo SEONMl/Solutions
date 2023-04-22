@@ -43,7 +43,7 @@
 - [Tree](#tree)
 
 
-### [**Greedy**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Greedy)
+### [**Greedy Approach**](https://github.com/SEONMl/Solutions/tree/master/venv/Category/Greedy)
 
 
 ### **Graph** 
