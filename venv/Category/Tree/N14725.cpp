@@ -1,51 +1,52 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-#include<set>
+#include<map>
 #define MAX 1000
 using namespace std;
 int N,K;
-vector<pair<int,string[]>> input;
 struct Trie{
-    set<Trie*> children;
-    string value;
-    bool terminal;
-
-    Trie(string v=""){
-        value=v;
-        terminal=false;
-    }
+    map<string, Trie*> children;
 
     public:
-    void insert(string str){
-        Trie *head=this;
-        
-        for(auto child:head->children){
-            if(child->value==str){
-                head=child;
+    void insert(vector<string> str){
+        Trie* head = this;
+        for(string cur: str){
+            if(head->children.find(cur) == head->children.end()){// 존재하지 않음
+                head->children.insert({cur, new Trie()});
             }
-            else{
-                head->children.insert(new Trie(str));
+            head=head->children[cur];
+        }
+    }
+
+    void print(int depth){
+        Trie* head =this;
+        for(auto child:children){
+            for(int i(0);i<depth ;i++){
+                cout<<"--";
             }
+            cout<<child.first<<'\n';
+            child.second->print(depth+1);
         }
     }
 
 };
-bool comp(pair<int,string[]> s1, pair<int,string[]> s2){
-    return s1.first < s2.first;
-}
+
 int main(){
     ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     cin>>N;
 
-    Trie root;
+    Trie* root =new Trie();
     for(int i=0;i<N;i++){
         cin>>K;
-        string tmp[K];
+        vector<string> tmp;
         for(int j=0;j<K;j++){
-            cin>>tmp[j];
+            string t;
+            cin>>t;
+            tmp.push_back(t);
         }
-        input.push_back(make_pair(K,tmp));
+        root->insert(tmp);
     }
-    sort(input.begin(), input.end(), comp);
+
+    root->print(0);
 }
